@@ -10,7 +10,10 @@ const translate = new Translate({
 });
 
 class TranslatorModule {
-  async detectLanguage(text: string) {
+  constructor(client){
+    this.client = ...
+  }
+  static async detectLanguage(text: string) {
     try {
       let response = await translate.detect(text);
       return response[0].language;
@@ -19,7 +22,7 @@ class TranslatorModule {
       return 0;
     }
   }
-  async translateText(text: string, targetLanguage: string) {
+  static async translateText(text: string, targetLanguage: string) {
     try {
       let [response] = await translate.translate(text, targetLanguage);
       return response;
